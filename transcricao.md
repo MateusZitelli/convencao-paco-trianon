@@ -1,7 +1,5 @@
 # Convenção de Condomínio — Edifício Paço do Trianon
 
-> Transcrição revisada visualmente a partir dos PNGs em `CONVENCAO-1_pages_png/` (gerados de `CONVENÇÃO-1.pdf`). O texto principal foi normalizado em Markdown, com quebras de linha de datilografia e hifenizações de fim de página recompostas. Carimbos, rubricas e manuscritos marginais foram omitidos, exceto observações de encerramento.
-
 CONVENÇÃO DE CONDOMÍNIO
 EDIFÍCIO "PAÇO DO TRIANON"
 Praça Alexandre de Gusmão, no. 95
