@@ -77,7 +77,9 @@
     .signature-mark { color:var(--muted); font-style:italic; }
     .note { margin-top: 26px; padding: 14px 16px; border:1px solid var(--line); border-radius: 16px; background: var(--paper-soft); color: var(--muted); font: 14px/1.55 var(--sans); }
     .hidden-by-search { display:none !important; }
-    mark { background:#ffe5a3; border-radius:3px; padding:0 .08em; }
+    .search-status { min-height: 18px; margin: -7px 0 14px; color: var(--muted); font: 12px/1.4 var(--sans); }
+    mark.search-match { background:#ffe5a3; color:inherit; border-radius:4px; padding:0 .08em; box-shadow: 0 0 0 1px rgba(184,135,70,.18); }
+    mark.search-fuzzy { background:#dff3ff; color:inherit; border-radius:4px; padding:0 .04em; box-shadow: 0 0 0 1px rgba(76,132,168,.18); }
     @media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } .toc { position: static; max-height: none; } .document { padding: clamp(20px, 5vw, 42px); } }
     @media (max-width: 640px) { body { font-size: 16px; } .layout { width: min(100% - 18px, 1440px); } .clause-header { grid-template-columns: 1fr; } .doc-item { grid-template-columns: 44px minmax(0,1fr); } }
     @media print { .hero, .toc { display:none; } body { background:white; font-size: 12pt; } .layout { display:block; width:100%; margin:0; } .document { box-shadow:none; border:0; padding:0; } .clause { break-inside: avoid; border-color:#ddd; } a { color:inherit; text-decoration:none; } }
@@ -91,7 +93,8 @@
   <div class="layout">
     <aside class="toc" aria-label="Sumário">
       <h2>Sumário</h2>
-      <input class="search" id="search" type="search" placeholder="Buscar no documento..." aria-label="Buscar no documento">
+      <input class="search" id="search" type="search" placeholder="Busca fuzzy: ex. garagem, sindco, assembleia..." aria-label="Buscar no documento">
+      <div class="search-status" id="searchStatus" aria-live="polite"></div>
       <ol><li><a href="#capitulo-i"><span class="toc-no">CAPÍTULO I</span><span class="toc-title">DO EDIFÍCIO EM GERAL</span></a></li>
 <li><a href="#capitulo-ii"><span class="toc-no">CAPÍTULO II</span><span class="toc-title">DOS DIREITOS E DEVERES DOS CONDÔMINOS</span></a></li>
 <li><a href="#capitulo-iii"><span class="toc-no">CAPÍTULO III</span><span class="toc-title">DOS ENCARGOS, FORMA E PROPORÇÃO DAS CONTRIBUIÇÕES PARA AS DESPESAS DE CUSTEIO E PARA AS EXTRAORDINÁRIAS</span></a></li>
@@ -886,16 +889,194 @@
   </div>
   <script>
     const search = document.getElementById('search');
+    const searchStatus = document.getElementById('searchStatus');
     const clauses = [...document.querySelectorAll('.clause')];
     const chapters = [...document.querySelectorAll('.chapter')];
-    search.addEventListener('input', () => {
-      const q = search.value.trim().toLowerCase();
-      clauses.forEach(c => c.classList.toggle('hidden-by-search', q && !c.innerText.toLowerCase().includes(q)));
-      chapters.forEach(ch => {
-        const visibleClause = [...ch.querySelectorAll('.clause')].some(c => !c.classList.contains('hidden-by-search'));
-        const ownTextMatch = ch.querySelector('.chapter-header')?.innerText.toLowerCase().includes(q);
-        ch.classList.toggle('hidden-by-search', q && !visibleClause && !ownTextMatch);
+    const searchable = [...clauses, ...document.querySelectorAll('.chapter-header, .title-sheet')];
+
+    searchable.forEach(el => {
+      el.dataset.originalHtml = el.innerHTML;
+      el.dataset.searchText = normalizeText(el.innerText);
+    });
+
+    function normalizeText(value) {
+      return value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ç/g, 'c')
+        .replace(/[^a-z0-9%]+/g, ' ')
+        .trim();
+    }
+
+    function fuzzyScore(query, text) {
+      if (!query) return 1;
+      if (text.includes(query)) return 1000 + query.length;
+
+      const terms = query.split(/\s+/).filter(Boolean);
+      if (terms.length > 1) {
+        const scores = terms.map(term => fuzzyScore(term, text));
+        if (scores.every(Boolean)) return scores.reduce((a, b) => a + b, 0) / terms.length;
+      }
+
+      let qi = 0;
+      let first = -1;
+      let last = -1;
+      let gaps = 0;
+      for (let ti = 0; ti < text.length && qi < query.length; ti++) {
+        if (text[ti] === query[qi]) {
+          if (first === -1) first = ti;
+          if (last !== -1) gaps += ti - last - 1;
+          last = ti;
+          qi++;
+        }
+      }
+      if (qi !== query.length) return 0;
+      return Math.max(1, 100 - gaps - (last - first - query.length));
+    }
+
+    function restoreHighlights() {
+      searchable.forEach(el => { el.innerHTML = el.dataset.originalHtml; });
+    }
+
+    function normalizedWithMap(text) {
+      let normalized = '';
+      const map = [];
+      [...text].forEach((char, index) => {
+        const n = char.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ç/g, 'c');
+        for (const out of [...n]) {
+          if (/[a-z0-9%]/.test(out)) {
+            normalized += out;
+            map.push(index);
+          } else if (normalized && normalized.at(-1) !== ' ') {
+            normalized += ' ';
+            map.push(index);
+          }
+        }
       });
+      return { normalized, map };
+    }
+
+    function markTextNode(node, ranges, className) {
+      if (!ranges.length) return 0;
+      const text = node.nodeValue;
+      const frag = document.createDocumentFragment();
+      let cursor = 0;
+      let count = 0;
+      ranges.forEach(([start, end]) => {
+        if (start > cursor) frag.appendChild(document.createTextNode(text.slice(cursor, start)));
+        const mark = document.createElement('mark');
+        mark.className = className;
+        mark.textContent = text.slice(start, end);
+        frag.appendChild(mark);
+        cursor = end;
+        count++;
+      });
+      if (cursor < text.length) frag.appendChild(document.createTextNode(text.slice(cursor)));
+      node.parentNode.replaceChild(frag, node);
+      return count;
+    }
+
+    function highlightExact(root, terms) {
+      let total = 0;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement.closest('script, style, mark')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => {
+        const { normalized, map } = normalizedWithMap(node.nodeValue);
+        const ranges = [];
+        terms.forEach(term => {
+          let pos = normalized.indexOf(term);
+          while (pos !== -1) {
+            const start = map[pos];
+            const end = map[pos + term.length - 1] + 1;
+            if (!ranges.some(([a, b]) => start < b && end > a)) ranges.push([start, end]);
+            pos = normalized.indexOf(term, pos + Math.max(1, term.length));
+          }
+        });
+        ranges.sort((a, b) => a[0] - b[0]);
+        total += markTextNode(node, ranges, 'search-match');
+      });
+      return total;
+    }
+
+    function highlightFuzzy(root, query) {
+      if (!query || query.length < 3) return 0;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement.closest('script, style, mark')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const { normalized, map } = normalizedWithMap(node.nodeValue);
+        let qi = 0;
+        const ranges = [];
+        for (let i = 0; i < normalized.length && qi < query.length; i++) {
+          if (normalized[i] === query[qi]) {
+            const original = map[i];
+            ranges.push([original, original + 1]);
+            qi++;
+          }
+        }
+        if (qi === query.length) return markTextNode(node, ranges, 'search-fuzzy');
+      }
+      return 0;
+    }
+
+    function runSearch() {
+      restoreHighlights();
+      const raw = search.value.trim();
+      const query = normalizeText(raw);
+      const terms = query.split(/\s+/).filter(term => term.length > 1);
+
+      if (!query) {
+        clauses.forEach(c => c.classList.remove('hidden-by-search'));
+        chapters.forEach(ch => ch.classList.remove('hidden-by-search'));
+        searchStatus.textContent = '';
+        return;
+      }
+
+      let visibleCount = 0;
+      clauses.forEach(clause => {
+        const score = fuzzyScore(query, clause.dataset.searchText || normalizeText(clause.innerText));
+        const visible = score > 0;
+        clause.classList.toggle('hidden-by-search', !visible);
+        if (visible) {
+          visibleCount++;
+          const exacts = highlightExact(clause, terms);
+          if (!exacts) highlightFuzzy(clause, query.replace(/\s+/g, ''));
+        }
+      });
+
+      chapters.forEach(ch => {
+        const header = ch.querySelector('.chapter-header');
+        const headerScore = header ? fuzzyScore(query, header.dataset.searchText || normalizeText(header.innerText)) : 0;
+        const hasVisibleClause = [...ch.querySelectorAll('.clause')].some(c => !c.classList.contains('hidden-by-search'));
+        ch.classList.toggle('hidden-by-search', !headerScore && !hasVisibleClause);
+        if (headerScore && header) {
+          const exacts = highlightExact(header, terms);
+          if (!exacts) highlightFuzzy(header, query.replace(/\s+/g, ''));
+        }
+      });
+
+      searchStatus.textContent = visibleCount === 1 ? '1 cláusula encontrada' : `${visibleCount} cláusulas encontradas`;
+    }
+
+    search.addEventListener('input', runSearch);
+    search.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        search.value = '';
+        runSearch();
+      }
     });
   </script>
 </body>
