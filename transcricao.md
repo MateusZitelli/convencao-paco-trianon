@@ -13,9 +13,7 @@ DO EDIFÍCIO EM GERAL
 
 CLÁUSULA 1a. - O Condomínio PAÇO DO TRIANON, sito à Praça Alexandre de Gusmão, número 95, esquina com a Alameda Jaú, Bairro de Bela Vista, na Cidade de São Paulo, Estado de São Paulo, é de destinação exclusivamente residencial, com 24 (vinte e quatro) pavimentos, sendo 02 (dois) pavimentos destinados à guarda e estacionamento de automóveis de passeio, 01 (um) pavimento térreo destinado a uso comum, e 21 (vinte e um) pavimentos destinados a fins residenciais, sendo 18 (dezoito) pavimentos-tipo, constituídos de apartamentos "duplex" e 03 (três) pavimentos constituídos de apartamentos "triplex" de cobertura, totalizando 160 (cento e sessenta) unidades residenciais autônomas.
 
-Parágrafo Primeiro — Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos "duplex" numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915.
-
-Os 03 (três) pavimentos superiores conterão 16 (dezesseis) apartamentos "triplex" numerados seguidamente de C-1.000 a C-1.015.
+Parágrafo Primeiro — Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos "duplex" numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915. Os 03 (três) pavimentos superiores conterão 16 (dezesseis) apartamentos "triplex" numerados seguidamente de C-1.000 a C-1.015.
 
 Parágrafo Segundo — As vagas de garagem serão em número de 160 (cento e sessenta), em locais indeterminados, assim distribuídas: 88 (oitenta e oito) vagas no segundo sub-solo e 72 (setenta e duas) vagas no primeiro sub-solo.
 
