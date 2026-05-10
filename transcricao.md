@@ -13,11 +13,11 @@ DO EDIFÍCIO EM GERAL
 
 CLÁUSULA 1a. - O Condomínio PAÇO DO TRIANON, sito à Praça Alexandre de Gusmão, número 95, esquina com a Alameda Jaú, Bairro de Bela Vista, na Cidade de São Paulo, Estado de São Paulo, é de destinação exclusivamente residencial, com 24 (vinte e quatro) pavimentos, sendo 02 (dois) pavimentos destinados à guarda e estacionamento de automóveis de passeio, 01 (um) pavimento térreo destinado a uso comum, e 21 (vinte e um) pavimentos destinados a fins residenciais, sendo 18 (dezoito) pavimentos-tipo, constituídos de apartamentos "duplex" e 03 (três) pavimentos constituídos de apartamentos "triplex" de cobertura, totalizando 160 (cento e sessenta) unidades residenciais autônomas.
 
-Parágrafo Primeiro:- Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos "duplex" numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915.
+Parágrafo Primeiro — Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos "duplex" numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915.
 
 Os 03 (três) pavimentos superiores conterão 16 (dezesseis) apartamentos "triplex" numerados seguidamente de C-1.000 a C-1.015.
 
-Parágrafo Segundo:- As vagas de garagem serão em número de 160 (cento e sessenta), em locais indeterminados, assim distribuídas: 88 (oitenta e oito) vagas no segundo sub-solo e 72 (setenta e duas) vagas no primeiro sub-solo.
+Parágrafo Segundo — As vagas de garagem serão em número de 160 (cento e sessenta), em locais indeterminados, assim distribuídas: 88 (oitenta e oito) vagas no segundo sub-solo e 72 (setenta e duas) vagas no primeiro sub-solo.
 
 PARTES E COISAS DE USO COMUM
 
@@ -429,13 +429,13 @@ CLÁUSULA 26 - Ao Síndico compete:
 
 (n) entregar ao sucessor todos os livros e documentos em seu poder.
 
-PARÁGRAFO PRIMEIRO:- O Síndico poderá delegar suas funções administrativas a terceiros de sua confiança, mas sob a sua exclusiva responsabilidade.
+PARÁGRAFO PRIMEIRO — O Síndico poderá delegar suas funções administrativas a terceiros de sua confiança, mas sob a sua exclusiva responsabilidade.
 
-PARÁGRAFO SEGUNDO:- Como remuneração por seus serviços, o Síndico receberá, mensalmente, a importância que for fixada anualmente pela Assembléia Geral Ordinária.
+PARÁGRAFO SEGUNDO — Como remuneração por seus serviços, o Síndico receberá, mensalmente, a importância que for fixada anualmente pela Assembléia Geral Ordinária.
 
-PARÁGRAFO TERCEIRO:- Nos seus impedimentos eventuais, o Síndico será substituído pelo Sub-Síndico. Em caso de vaga, a Assembléia elegerá outro, que exercerá seu mandato pelo tempo restante. Em caso de destituição, o Síndico prestará imediatamente contas de sua gestão.
+PARÁGRAFO TERCEIRO — Nos seus impedimentos eventuais, o Síndico será substituído pelo Sub-Síndico. Em caso de vaga, a Assembléia elegerá outro, que exercerá seu mandato pelo tempo restante. Em caso de destituição, o Síndico prestará imediatamente contas de sua gestão.
 
-PARÁGRAFO QUARTO:- O Síndico não é responsável, pessoalmente, pelas obrigações contraídas em nome do Condomínio desde que tenha agido no exercício regular de suas atribuições; responderá, porém pelos excessos de representação e pelo prejuízo a que der causa por dolo ou culpa.
+PARÁGRAFO QUARTO — O Síndico não é responsável, pessoalmente, pelas obrigações contraídas em nome do Condomínio desde que tenha agido no exercício regular de suas atribuições; responderá, porém pelos excessos de representação e pelo prejuízo a que der causa por dolo ou culpa.
 
 CLÁUSULA 27 - Ao porteiro ou zelador, nomeado pelo Síndico do Edifício e empregado do Condomínio, além de outras funções compete:
 
@@ -555,9 +555,9 @@ CLÁUSULA 48 - Fica eleito o foro desta Cidade de São Paulo, com renúncia de q
 
 CLÁUSULA 49 - O Condomínio PAÇO DO TRIANON considerar-se-á definitivamente constituído e instalado para todos os jurídicos e legais efeitos, na data da expedição do respectivo HABITE-SE, pelas autoridades competentes, a partir de quando todos os Condôminos, ainda, mesmo os que somente mais tarde venham a utilizar suas unidades autônomas, começarão a concorrer para a satisfação das despesas ordinárias do Condomínio.
 
-PARÁGRAFO PRIMEIRO:- No prazo improrrogável de dez (10) dias, contados da data em que for averbado o HABITE-SE, os Condôminos reunir-se-ão em Assembléia Geral para eleição do Síndico, Sub-Síndico, membros do Conselho Consultivo e fixação das quotas provisórias com que cada um contribuirá para o pagamento das despesas da administração. Essas quotas serão estabelecidas por estimativa pelos Condôminos e serão revistas em Assembléia Geral para isso especialmente convocadas, nos três (03) meses seguintes, ocasião em que, diante da realidade econômica financeira expressa em balancetes mensais seu valor poderá ser mais precisamente fixado.
+PARÁGRAFO PRIMEIRO — No prazo improrrogável de dez (10) dias, contados da data em que for averbado o HABITE-SE, os Condôminos reunir-se-ão em Assembléia Geral para eleição do Síndico, Sub-Síndico, membros do Conselho Consultivo e fixação das quotas provisórias com que cada um contribuirá para o pagamento das despesas da administração. Essas quotas serão estabelecidas por estimativa pelos Condôminos e serão revistas em Assembléia Geral para isso especialmente convocadas, nos três (03) meses seguintes, ocasião em que, diante da realidade econômica financeira expressa em balancetes mensais seu valor poderá ser mais precisamente fixado.
 
-PARÁGRAFO SEGUNDO:- Compete ao primeiro Síndico, eleito no prazo de dez (10) dias seguintes ao do recebimento das respectivas chaves, solicitar à empresa que houver construído o prédio, a assistência técnica que eventualmente se mostrar necessária em suas respectivas unidades autônomas.
+PARÁGRAFO SEGUNDO — Compete ao primeiro Síndico, eleito no prazo de dez (10) dias seguintes ao do recebimento das respectivas chaves, solicitar à empresa que houver construído o prédio, a assistência técnica que eventualmente se mostrar necessária em suas respectivas unidades autônomas.
 
 CLÁUSULA 50 - Ficam requeridos e autorizados todos os registros imobiliários, que se fizerem necessários para a perfeita regularização deste instrumento.
 
