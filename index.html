@@ -927,30 +927,45 @@
         .trim();
     }
 
+    function levenshteinWithin(a, b, maxDistance) {
+      if (Math.abs(a.length - b.length) > maxDistance) return maxDistance + 1;
+      let previous = [...Array(b.length + 1).keys()];
+      for (let i = 1; i <= a.length; i++) {
+        const current = [i];
+        let rowMin = current[0];
+        for (let j = 1; j <= b.length; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          const value = Math.min(previous[j] + 1, current[j - 1] + 1, previous[j - 1] + cost);
+          current[j] = value;
+          rowMin = Math.min(rowMin, value);
+        }
+        if (rowMin > maxDistance) return maxDistance + 1;
+        previous = current;
+      }
+      return previous[b.length];
+    }
+
+    function termScore(term, text) {
+      if (term.length <= 2) return text.split(/\s+/).includes(term) ? 100 : 0;
+      if (text.includes(term)) return 1000 + term.length;
+
+      const words = text.split(/\s+/).filter(Boolean);
+      const maxDistance = term.length >= 7 ? 2 : 1;
+      for (const word of words) {
+        if (word.length < Math.max(3, term.length - maxDistance) || word.length > term.length + maxDistance) continue;
+        const distance = levenshteinWithin(term, word, maxDistance);
+        if (distance <= maxDistance) return 90 - distance * 20;
+      }
+      return 0;
+    }
+
     function fuzzyScore(query, text) {
       if (!query) return 1;
-      if (text.includes(query)) return 1000 + query.length;
-
       const terms = query.split(/\s+/).filter(Boolean);
-      if (terms.length > 1) {
-        const scores = terms.map(term => fuzzyScore(term, text));
-        if (scores.every(Boolean)) return scores.reduce((a, b) => a + b, 0) / terms.length;
-      }
-
-      let qi = 0;
-      let first = -1;
-      let last = -1;
-      let gaps = 0;
-      for (let ti = 0; ti < text.length && qi < query.length; ti++) {
-        if (text[ti] === query[qi]) {
-          if (first === -1) first = ti;
-          if (last !== -1) gaps += ti - last - 1;
-          last = ti;
-          qi++;
-        }
-      }
-      if (qi !== query.length) return 0;
-      return Math.max(1, 100 - gaps - (last - first - query.length));
+      if (!terms.length) return 0;
+      const scores = terms.map(term => termScore(term, text));
+      if (!scores.every(Boolean)) return 0;
+      return scores.reduce((a, b) => a + b, 0) / scores.length;
     }
 
     function restoreHighlights() {
