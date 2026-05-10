@@ -11,7 +11,7 @@ CAPÍTULO I
 
 DO EDIFÍCIO EM GERAL
 
-CLÁUSULA 1a. - O Condomínio PAÇO DO TRIANON, sito à Praça Alexandre de Gusmão, número 95, esquina com a Alameda Jaú, Bairro de Bela Vista, na Cidade de São Paulo, Estado de São Paulo, é de destinação exclusivamente residencial, com 24 (vinte e quatro) pavimentos, sendo 02 (dois) pavimentos destinados à guarda e estacionamento de automóveis de passeio, 01 (um) pavimento térreo destinado a uso comum, e 21 (vinte e um) pavimentos destinados a fins residenciais, sendo 18 (dezoito) pavimentos-tipo, constituídos de apartamentos "duplex" e 03 (três) pavimentos constituídos de apartamentos "triplex" de cobertura, totalizando 160 (cento e sessenta) unidades residenciais autônomas.
+CLÁUSULA 1ª - O Condomínio PAÇO DO TRIANON, sito à Praça Alexandre de Gusmão, número 95, esquina com a Alameda Jaú, Bairro de Bela Vista, na Cidade de São Paulo, Estado de São Paulo, é de destinação exclusivamente residencial, com 24 (vinte e quatro) pavimentos, sendo 02 (dois) pavimentos destinados à guarda e estacionamento de automóveis de passeio, 01 (um) pavimento térreo destinado a uso comum, e 21 (vinte e um) pavimentos destinados a fins residenciais, sendo 18 (dezoito) pavimentos-tipo, constituídos de apartamentos "duplex" e 03 (três) pavimentos constituídos de apartamentos "triplex" de cobertura, totalizando 160 (cento e sessenta) unidades residenciais autônomas.
 
 Parágrafo Primeiro — Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos "duplex" numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915. Os 03 (três) pavimentos superiores conterão 16 (dezesseis) apartamentos "triplex" numerados seguidamente de C-1.000 a C-1.015.
 
@@ -19,7 +19,7 @@ Parágrafo Segundo — As vagas de garagem serão em número de 160 (cento e ses
 
 PARTES E COISAS DE USO COMUM
 
-CLÁUSULA 2a. - O Condomínio PAÇO DO TRIANON, compõe-se de partes de propriedade e uso exclusivos, que são os apartamentos, e de partes de propriedade e uso comum, abaixo relacionados:
+CLÁUSULA 2ª - O Condomínio PAÇO DO TRIANON, compõe-se de partes de propriedade e uso exclusivos, que são os apartamentos, e de partes de propriedade e uso comum, abaixo relacionados:
 
 (a) o solo, com área de 2.462,00m²;
 
@@ -57,7 +57,7 @@ As partes e coisas de uso comum, foram descritas em conformidade com o projeto p
 
 PARTES DE PROPRIEDADE E USO EXCLUSIVOS
 
-CLÁUSULA 3a. - Constituem partes de propriedade e uso exclusivos de cada condômino a respectiva unidade autônoma identificada e discriminada pela designação numérica já indicada, com todas as suas instalações internas, encanamentos, tubulações, etc..., até sua intersecção com as linhas, encanamentos e tubulações troncos.
+CLÁUSULA 3ª - Constituem partes de propriedade e uso exclusivos de cada condômino a respectiva unidade autônoma identificada e discriminada pela designação numérica já indicada, com todas as suas instalações internas, encanamentos, tubulações, etc..., até sua intersecção com as linhas, encanamentos e tubulações troncos.
 
 DESCRIÇÃO, CONFRONTAÇÃO E CARACTERIZAÇÃO DOS APARTAMENTOS
 
@@ -235,7 +235,7 @@ CAPÍTULO II
 
 DOS DIREITOS E DEVERES DOS CONDÔMINOS
 
-CLÁUSULA 4a. - São direitos dos Condôminos:
+CLÁUSULA 4ª - São direitos dos Condôminos:
 
 (a) o direito de livremente dispor ou onerar suas respectivas unidades autônomas, bem como de transferir os direitos à sua aquisição e o direito de constituir ônus sobre ela, independentemente de consentimento dos condôminos ou titulares de direito à aquisição de outras unidades;
 
@@ -265,7 +265,7 @@ CLÁUSULA 4a. - São direitos dos Condôminos:
 
 (l) Denunciar ao Síndico qualquer irregularidade observada.
 
-CLÁUSULA 5a. - São deveres dos condôminos:
+CLÁUSULA 5ª - São deveres dos condôminos:
 
 (a) Guardar decoro e respeitar o uso das coisas e partes comuns, não as usando nem permitindo que as usem, bem como as respectivas unidades autônomas, para fins diversos a que se destinam;
 
@@ -309,17 +309,17 @@ CAPÍTULO III
 
 DOS ENCARGOS, FORMA E PROPORÇÃO DAS CONTRIBUIÇÕES PARA AS DESPESAS DE CUSTEIO E PARA AS EXTRAORDINÁRIAS
 
-CLÁUSULA 6a. - Cada condômino ou titular de direito à aquisição de unidades autônomas concorrerá, obrigatoriamente, no pagamento das denominadas despesas normais dos serviços comuns, ou seja, despesas de conservação, reparação, limpeza e administração de todas as coisas e de todos os serviços comuns, além de prêmio de seguro da edificação, remuneração do Síndico e salários dos empregados do Condomínio, encargos da previdência social, consumo de energia elétrica, na proporção da sua respectiva fração ideal do terreno e de partes e coisas comuns.
+CLÁUSULA 6ª - Cada condômino ou titular de direito à aquisição de unidades autônomas concorrerá, obrigatoriamente, no pagamento das denominadas despesas normais dos serviços comuns, ou seja, despesas de conservação, reparação, limpeza e administração de todas as coisas e de todos os serviços comuns, além de prêmio de seguro da edificação, remuneração do Síndico e salários dos empregados do Condomínio, encargos da previdência social, consumo de energia elétrica, na proporção da sua respectiva fração ideal do terreno e de partes e coisas comuns.
 
-CLÁUSULA 7a. - Anualmente, será elaborado pelo Síndico, e votado pela Assembléia Geral, o orçamento dessas despesas normais de custeio, rateando-se a quota cabível a cada condômino ou titular de unidade autônoma, através de parcelas trimestrais, que deverão ser pagas nos 10 (dez) dias iniciais de cada trimestre civil.
+CLÁUSULA 7ª - Anualmente, será elaborado pelo Síndico, e votado pela Assembléia Geral, o orçamento dessas despesas normais de custeio, rateando-se a quota cabível a cada condômino ou titular de unidade autônoma, através de parcelas trimestrais, que deverão ser pagas nos 10 (dez) dias iniciais de cada trimestre civil.
 
-CLÁUSULA 8a. - O Síndico poderá proceder às despesas normais de custeio, não previstas no orçamento, ou que excedam os valores orçados, desde que, no período de um trimestre, essas despesas normais de custeio, não excedam o dobro do valor orçado para as despesas normais de custeio nesse trimestre; quando se atingir esse limite, deverá ser convocada outra Assembléia, para aprovação de despesas excedentes, e decisão em torno da forma de arrecadação do "deficit" acaso apurado.
+CLÁUSULA 8ª - O Síndico poderá proceder às despesas normais de custeio, não previstas no orçamento, ou que excedam os valores orçados, desde que, no período de um trimestre, essas despesas normais de custeio, não excedam o dobro do valor orçado para as despesas normais de custeio nesse trimestre; quando se atingir esse limite, deverá ser convocada outra Assembléia, para aprovação de despesas excedentes, e decisão em torno da forma de arrecadação do "deficit" acaso apurado.
 
 CAPÍTULO IV
 
 DAS ASSEMBLÉIAS GERAIS
 
-CLÁUSULA 9a. - As Assembléias Gerais serão convocadas mediante carta registrada e protocolada, pelo Síndico ou por Condôminos que representem, pelo menos, um quarto (1/4) do Condomínio, e serão realizadas no próprio Edifício, salvo motivo de força maior.
+CLÁUSULA 9ª - As Assembléias Gerais serão convocadas mediante carta registrada e protocolada, pelo Síndico ou por Condôminos que representem, pelo menos, um quarto (1/4) do Condomínio, e serão realizadas no próprio Edifício, salvo motivo de força maior.
 
 (a) As convocações indicarão o resumo da ordem do dia, a data, a hora e o local da Assembléia e serão assinadas pelo Síndico ou pelos Condôminos que as fizerem.
 
