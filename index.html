@@ -54,7 +54,8 @@
     .chapter-header { text-align:center; margin: 0 0 30px; padding: 34px 12px 28px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background: linear-gradient(90deg, transparent, rgba(239,224,204,.45), transparent); }
     .chapter-no { display:inline-block; font:900 12px/1 var(--sans); color:var(--accent); letter-spacing:.24em; text-transform:uppercase; margin-bottom: 12px; }
     .chapter h2 { margin:0; font: 700 clamp(1.55rem, 3vw, 2.35rem)/1.1 var(--serif); text-transform: uppercase; letter-spacing:.045em; }
-    .subheading { margin: 38px auto 24px; padding: 0; border: 0; text-align: center; font: 900 1.02rem/1.35 var(--mono); color:#2f261f; text-transform: uppercase; letter-spacing:.08em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    .section-divider { margin: 46px auto 24px; text-align:center; font: 900 clamp(1rem, 1.8vw, 1.18rem)/1.35 var(--mono); color:#2f261f; text-transform: uppercase; letter-spacing:.08em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; scroll-margin-top: 20px; }
+    .subheading { margin: 30px auto 16px; padding: 0; border: 0; text-align: center; font: 800 .94rem/1.35 var(--mono); color:#4a3728; text-transform: uppercase; letter-spacing:.06em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     p { margin: 0 0 1rem; text-align: justify; hyphens: auto; }
     .clause { position: relative; margin: 28px 0; padding: 0; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, #fffefd, #fff9ef); overflow: hidden; scroll-margin-top: 20px; }
     .clause-header { display:grid; grid-template-columns: 82px minmax(0,1fr); gap: 18px; align-items: start; padding: 22px 24px 18px; background: linear-gradient(90deg, var(--accent-soft), rgba(239,224,204,.25)); border-bottom:1px solid var(--line); }
@@ -182,8 +183,8 @@
 <div class="paragraph-callout"><div class="paragraph-label-title">Parágrafo Primeiro</div><p>Os 18 (dezoito) pavimentos-tipo conterão, a cada 02 (dois) pavimentos, 16 (dezesseis) apartamentos &quot;duplex&quot; numerados seguidamente de 100 a 115, 200 a 215, 300 a 315, 400 a 415, 500 a 515, 600 a 615, 700 a 715, 800 a 815 e 900 a 915.</p></div>
 <p>Os 03 (três) pavimentos superiores conterão 16 (dezesseis) apartamentos &quot;triplex&quot; numerados seguidamente de C-1.000 a C-1.015.</p>
 <div class="paragraph-callout"><div class="paragraph-label-title">Parágrafo Segundo</div><p>As vagas de garagem serão em número de 160 (cento e sessenta), em locais indeterminados, assim distribuídas: 88 (oitenta e oito) vagas no segundo sub-solo e 72 (setenta e duas) vagas no primeiro sub-solo.</p></div>
-<h4 class="subheading">PARTES E COISAS DE USO COMUM</h4>
 </article>
+<h3 class="section-divider" data-section-for="clausula-2" id="partes-e-coisas-de-uso-comum">PARTES E COISAS DE USO COMUM</h3>
 <article class="clause" id="clausula-2">
 <a class="anchor" href="#clausula-2" aria-label="Link permanente para cláusula 2">§</a>
 <header class="clause-header">
@@ -209,8 +210,8 @@
 <div class="doc-item letter-item"><span class="item-label">(p)</span><div class="item-body">a piscina, o &quot;deck&quot;, a sauna, sala de descanso, sanitários, equipamentos da piscina, instalação de sauna, bar, respectivos mobiliários, decoração e mobiliário do salão de festas, brinquedos na área descoberta de recreação infantil, equipamento de lavanderia;</div></div>
 <div class="doc-item letter-item"><span class="item-label">(q)</span><div class="item-body">enfim, todas as partes e coisas, que por definição legal ou por sua própria natureza, sejam de uso comum.</div></div>
 <p>As partes e coisas de uso comum, foram descritas em conformidade com o projeto primitivo, podendo ser alteradas em caso de modificação do projeto.</p>
-<h4 class="subheading">PARTES DE PROPRIEDADE E USO EXCLUSIVOS</h4>
 </article>
+<h3 class="section-divider" data-section-for="clausula-3" id="partes-de-propriedade-e-uso-exclusivos">PARTES DE PROPRIEDADE E USO EXCLUSIVOS</h3>
 <article class="clause" id="clausula-3">
 <a class="anchor" href="#clausula-3" aria-label="Link permanente para cláusula 3">§</a>
 <header class="clause-header">
@@ -897,7 +898,8 @@
     const titleSheet = document.querySelector('.title-sheet');
     const tocChapterLinks = [...document.querySelectorAll('.toc ol li')];
     const clauseLinks = [...document.querySelectorAll('.clause-jump a')];
-    const searchable = [...clauses, ...document.querySelectorAll('.chapter-header, .title-sheet')];
+    const sectionDividers = [...document.querySelectorAll('.section-divider')];
+    const searchable = [...clauses, ...sectionDividers, ...document.querySelectorAll('.chapter-header, .title-sheet')];
 
     searchable.forEach(el => {
       el.dataset.originalHtml = el.innerHTML;
@@ -1047,6 +1049,7 @@
       if (!query) {
         if (titleSheet) titleSheet.classList.remove('hidden-by-search');
         clauses.forEach(c => c.classList.remove('hidden-by-search'));
+        sectionDividers.forEach(divider => divider.classList.remove('hidden-by-search'));
         chapters.forEach(ch => ch.classList.remove('hidden-by-search'));
         tocChapterLinks.forEach(li => li.classList.remove('hidden-by-search'));
         clauseLinks.forEach(a => a.classList.remove('hidden-by-search'));
@@ -1081,11 +1084,25 @@
         }
       });
 
+      sectionDividers.forEach(divider => {
+        const target = divider.dataset.sectionFor ? document.getElementById(divider.dataset.sectionFor) : null;
+        const ownScore = fuzzyScore(query, divider.dataset.searchText || normalizeText(divider.innerText));
+        const targetVisible = target && !target.classList.contains('hidden-by-search');
+        const visible = Boolean(ownScore || targetVisible);
+        divider.classList.toggle('hidden-by-search', !visible);
+        if (ownScore) {
+          visibleSectionCount++;
+          const exacts = highlightExact(divider, terms);
+          if (!exacts) highlightFuzzy(divider, fuzzyNeedle);
+        }
+      });
+
       chapters.forEach(ch => {
         const header = ch.querySelector('.chapter-header');
         const headerScore = header ? fuzzyScore(query, header.dataset.searchText || normalizeText(header.innerText)) : 0;
         const hasVisibleClause = [...ch.querySelectorAll('.clause')].some(c => !c.classList.contains('hidden-by-search'));
-        const visible = Boolean(headerScore || hasVisibleClause);
+        const hasVisibleDivider = [...ch.querySelectorAll('.section-divider')].some(divider => !divider.classList.contains('hidden-by-search'));
+        const visible = Boolean(headerScore || hasVisibleClause || hasVisibleDivider);
         ch.classList.toggle('hidden-by-search', !visible);
 
         const tocItem = document.querySelector(`.toc ol a[href="#${ch.id}"]`)?.closest('li');
