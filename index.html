@@ -77,6 +77,7 @@
     .signature-mark { color:var(--muted); font-style:italic; }
     .note { margin-top: 26px; padding: 14px 16px; border:1px solid var(--line); border-radius: 16px; background: var(--paper-soft); color: var(--muted); font: 14px/1.55 var(--sans); }
     .hidden-by-search { display:none !important; }
+    .toc .hidden-by-search, .clause-jump .hidden-by-search { display:none !important; }
     .search-status { min-height: 18px; margin: -7px 0 14px; color: var(--muted); font: 12px/1.4 var(--sans); }
     mark.search-match { background:#ffe5a3; color:inherit; border-radius:4px; padding:0 .08em; box-shadow: 0 0 0 1px rgba(184,135,70,.18); }
     mark.search-fuzzy { background:#dff3ff; color:inherit; border-radius:4px; padding:0 .04em; box-shadow: 0 0 0 1px rgba(76,132,168,.18); }
@@ -892,6 +893,9 @@
     const searchStatus = document.getElementById('searchStatus');
     const clauses = [...document.querySelectorAll('.clause')];
     const chapters = [...document.querySelectorAll('.chapter')];
+    const titleSheet = document.querySelector('.title-sheet');
+    const tocChapterLinks = [...document.querySelectorAll('.toc ol li')];
+    const clauseLinks = [...document.querySelectorAll('.clause-jump a')];
     const searchable = [...clauses, ...document.querySelectorAll('.chapter-header, .title-sheet')];
 
     searchable.forEach(el => {
@@ -1037,23 +1041,42 @@
       const raw = search.value.trim();
       const query = normalizeText(raw);
       const terms = query.split(/\s+/).filter(term => term.length > 1);
+      const fuzzyNeedle = query.replace(/\s+/g, '');
 
       if (!query) {
+        if (titleSheet) titleSheet.classList.remove('hidden-by-search');
         clauses.forEach(c => c.classList.remove('hidden-by-search'));
         chapters.forEach(ch => ch.classList.remove('hidden-by-search'));
+        tocChapterLinks.forEach(li => li.classList.remove('hidden-by-search'));
+        clauseLinks.forEach(a => a.classList.remove('hidden-by-search'));
         searchStatus.textContent = '';
         return;
       }
 
-      let visibleCount = 0;
+      let visibleClauseCount = 0;
+      let visibleSectionCount = 0;
+
+      if (titleSheet) {
+        const titleScore = fuzzyScore(query, titleSheet.dataset.searchText || normalizeText(titleSheet.innerText));
+        titleSheet.classList.toggle('hidden-by-search', !titleScore);
+        if (titleScore) {
+          visibleSectionCount++;
+          const exacts = highlightExact(titleSheet, terms);
+          if (!exacts) highlightFuzzy(titleSheet, fuzzyNeedle);
+        }
+      }
+
       clauses.forEach(clause => {
         const score = fuzzyScore(query, clause.dataset.searchText || normalizeText(clause.innerText));
         const visible = score > 0;
         clause.classList.toggle('hidden-by-search', !visible);
+        const jump = document.querySelector(`.clause-jump a[href="#${clause.id}"]`);
+        if (jump) jump.classList.toggle('hidden-by-search', !visible);
         if (visible) {
-          visibleCount++;
+          visibleClauseCount++;
+          visibleSectionCount++;
           const exacts = highlightExact(clause, terms);
-          if (!exacts) highlightFuzzy(clause, query.replace(/\s+/g, ''));
+          if (!exacts) highlightFuzzy(clause, fuzzyNeedle);
         }
       });
 
@@ -1061,14 +1084,22 @@
         const header = ch.querySelector('.chapter-header');
         const headerScore = header ? fuzzyScore(query, header.dataset.searchText || normalizeText(header.innerText)) : 0;
         const hasVisibleClause = [...ch.querySelectorAll('.clause')].some(c => !c.classList.contains('hidden-by-search'));
-        ch.classList.toggle('hidden-by-search', !headerScore && !hasVisibleClause);
+        const visible = Boolean(headerScore || hasVisibleClause);
+        ch.classList.toggle('hidden-by-search', !visible);
+
+        const tocItem = document.querySelector(`.toc ol a[href="#${ch.id}"]`)?.closest('li');
+        if (tocItem) tocItem.classList.toggle('hidden-by-search', !visible);
+
         if (headerScore && header) {
+          visibleSectionCount++;
           const exacts = highlightExact(header, terms);
-          if (!exacts) highlightFuzzy(header, query.replace(/\s+/g, ''));
+          if (!exacts) highlightFuzzy(header, fuzzyNeedle);
         }
       });
 
-      searchStatus.textContent = visibleCount === 1 ? '1 cláusula encontrada' : `${visibleCount} cláusulas encontradas`;
+      const clauseText = visibleClauseCount === 1 ? '1 cláusula' : `${visibleClauseCount} cláusulas`;
+      const sectionText = visibleSectionCount === 1 ? '1 seção' : `${visibleSectionCount} seções`;
+      searchStatus.textContent = `${sectionText} exibidas • ${clauseText} encontradas`;
     }
 
     search.addEventListener('input', runSearch);
