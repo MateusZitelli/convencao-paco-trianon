@@ -54,9 +54,11 @@
     .chapter-header { text-align:center; margin: 0 0 30px; padding: 34px 12px 28px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background: linear-gradient(90deg, transparent, rgba(239,224,204,.45), transparent); }
     .chapter-no { display:inline-block; font:900 12px/1 var(--sans); color:var(--accent); letter-spacing:.24em; text-transform:uppercase; margin-bottom: 12px; }
     .chapter h2 { margin:0; font: 700 clamp(1.55rem, 3vw, 2.35rem)/1.1 var(--serif); text-transform: uppercase; letter-spacing:.045em; }
-    .section-divider { margin: 46px auto 24px; text-align:center; font: 900 clamp(1rem, 1.8vw, 1.18rem)/1.35 var(--mono); color:#2f261f; text-transform: uppercase; letter-spacing:.08em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; scroll-margin-top: 20px; }
-    .subheading { margin: 30px auto 16px; padding: 0; border: 0; text-align: center; font: 800 .94rem/1.35 var(--mono); color:#4a3728; text-transform: uppercase; letter-spacing:.06em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .section-content { margin: 0 clamp(20px, 4vw, 34px) 34px; scroll-margin-top: 20px; }
+    .section-divider { display:block; width:min(100%, 78ch); margin: 54px auto 28px; padding:0; border:0; background:transparent; box-shadow:none; text-align:center; font: 900 clamp(1rem, 1.8vw, 1.18rem)/1.35 var(--mono); color:#2f261f; text-transform: uppercase; letter-spacing:.08em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; scroll-margin-top: 20px; }
+    .section-divider + .clause { margin-top: 0; }
+    .section-content + .section-divider { margin-top: 58px; }
+    .subheading { margin: 28px auto 14px; padding: 0; border: 0; text-align: center; font: 800 .94rem/1.35 var(--mono); color:#4a3728; text-transform: uppercase; letter-spacing:.06em; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .section-content { margin: 0 clamp(20px, 4vw, 34px) 34px; padding:0; border:0; background:transparent; box-shadow:none; scroll-margin-top: 20px; }
     .section-content .doc-item { margin-left: 0; margin-right: 0; }
     .section-content > p { margin-left: 0; margin-right: 0; }
     p { margin: 0 0 1rem; text-align: justify; hyphens: auto; }
@@ -79,6 +81,7 @@
     .paragraph-callout p { margin: 0; }
     .paragraph-label-title { display:inline-block; margin-bottom: 8px; padding: 4px 10px; border:1px solid var(--line-strong); border-radius:999px; background:#fff; font:900 12px/1 var(--sans); color:var(--accent); letter-spacing:.10em; text-transform:uppercase; }
     .signature-line { text-align:center; font: 800 1rem/1.5 var(--sans); letter-spacing:.05em; margin-top: 18px; }
+    .signature-party { text-align:center; margin: 24px clamp(20px, 4vw, 34px) 8px; font: 900 1rem/1.35 var(--sans); letter-spacing:.08em; color:#4a3728; }
     .signature-mark { color:var(--muted); font-style:italic; }
     .note { margin-top: 26px; padding: 14px 16px; border:1px solid var(--line); border-radius: 16px; background: var(--paper-soft); color: var(--muted); font: 14px/1.55 var(--sans); }
     .hidden-by-search { display:none !important; }
@@ -890,7 +893,7 @@
 <p class="clause-lead">Ficam requeridos e autorizados todos os registros imobiliários, que se fizerem necessários para a perfeita regularização deste instrumento.</p>
 </div></header>
 <p class="signature-line">São Paulo, 20 MAR 1984</p>
-<h4 class="subheading">BRASCAN IMOBILIÁRIA S.A.</h4>
+<p class="signature-party">BRASCAN IMOBILIÁRIA S.A.</p>
 <p class="signature-line signature-mark">[assinatura]</p>
 <aside class="note">Página 34: sem texto principal datilografado; contém logotipo e carimbo/reconhecimento notarial.</aside>
 </article>
